@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">UNDEFAULT AI preview</title>
+  <desc id="desc">A warm editorial design preview for the UNDEFAULT AI concept.</desc>
+  <rect width="1200" height="630" fill="#f5f1ea"/>
+  <rect x="56" y="56" width="1088" height="518" rx="40" fill="#fbf8f4" stroke="#171412" stroke-width="2"/>
+  <rect x="120" y="130" width="90" height="90" rx="24" fill="#fbf8f4" stroke="#171412" stroke-width="2"/>
+  <text x="240" y="180" fill="#171412" font-size="26" font-family="Georgia, serif" font-weight="600" letter-spacing="8">UNDEFAULT AI</text>
+  <text x="120" y="295" fill="#171412" font-size="86" font-family="Georgia, serif" font-weight="600">Why does AI</text>
+  <text x="120" y="385" fill="#171412" font-size="86" font-family="Georgia, serif" font-weight="600">design everything</text>
+  <text x="120" y="475" fill="#171412" font-size="86" font-family="Georgia, serif" font-weight="600">the same?</text>
+  <rect x="836" y="154" width="236" height="188" rx="32" fill="#d7d0c8"/>
+  <rect x="870" y="193" width="168" height="18" rx="9" fill="#171412" opacity="0.7"/>
+  <rect x="870" y="228" width="136" height="18" rx="9" fill="#171412" opacity="0.5"/>
+  <rect x="870" y="263" width="96" height="18" rx="9" fill="#171412" opacity="0.4"/>
+  <circle cx="898" cy="424" r="40" fill="#c36a4c" opacity="0.75"/>
+  <rect x="964" y="390" width="90" height="20" rx="10" fill="#171412" opacity="0.7"/>
+  <rect x="964" y="425" width="122" height="16" rx="8" fill="#171412" opacity="0.4"/>
+</svg>
