@@ -3,8 +3,10 @@ import {
   analyzeDesign,
   decisionFramework,
   defaultPatterns,
+  methodSteps,
   promptExamples,
   sampleAnalysis,
+  uniquenessTest,
 } from './lib/detector'
 import './App.css'
 
@@ -14,6 +16,7 @@ const navigation = [
   { label: 'Detect', href: '#detect' },
   { label: 'Break', href: '#framework' },
   { label: 'Library', href: '#library' },
+  { label: 'Method', href: '#method' },
   { label: 'About', href: '#about' },
 ]
 
@@ -270,6 +273,96 @@ function App() {
                 </div>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section id="method" className="section method-section">
+          <div className="section-heading">
+            <p className="eyebrow">Method</p>
+            <h2>Move AI from creative director to production assistant.</h2>
+            <p className="lede">
+              Decide the strategy, personality, content, and user experience yourself first;
+              then use AI to execute and refine them. Vague prompts and shared templates push
+              every tool toward the same familiar result.
+            </p>
+          </div>
+
+          <ol className="method-list">
+            {methodSteps.map((step, index) => (
+              <li key={step.title} className="method-step">
+                <div className="method-index">
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <h3>{step.title}</h3>
+                </div>
+
+                <div className="method-body">
+                  <p className="method-summary">{step.summary}</p>
+
+                  {step.items && (
+                    <ul className="method-items">
+                      {step.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {step.contrast && (
+                    <div className="method-contrast">
+                      <div>
+                        <span>Generic</span>
+                        <p>“{step.contrast.weak}”</p>
+                      </div>
+                      <div className="alt">
+                        <span>Specific</span>
+                        <p>“{step.contrast.strong}”</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {step.split && (
+                    <div className="method-contrast">
+                      <div>
+                        <span>Let AI handle</span>
+                        <p>{step.split.ai}</p>
+                      </div>
+                      <div className="alt">
+                        <span>Keep for humans</span>
+                        <p>{step.split.human}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {step.example && (
+                    <blockquote className="method-example">
+                      <span>Example prompt</span>
+                      <p>{step.example}</p>
+                    </blockquote>
+                  )}
+
+                  <p className="method-note">{step.note}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <div className="method-test">
+            <div>
+              <p className="eyebrow small">A useful test</p>
+              <h3>Put your homepage beside three competitors and hide the logos.</h3>
+              <p>If the answers are no, the website is probably still using category defaults.</p>
+            </div>
+            <ul>
+              {uniquenessTest.map((question) => (
+                <li key={question}>{question}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="quote-box method-principle">
+            <p>
+              Don’t make an ordinary AI website look unusual at the end. Give the AI an unusual
+              strategy at the beginning.
+            </p>
           </div>
         </section>
 

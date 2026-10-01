@@ -586,6 +586,173 @@
   line-height: 1.7;
 }
 
+.method-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.method-step {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 36px;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.method-index {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+}
+
+.method-index span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+}
+
+.method-index h3 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.7rem, 2.6vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.method-summary {
+  margin: 0 0 18px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.method-items {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+  columns: 2;
+  column-gap: 28px;
+}
+
+.method-items li {
+  break-inside: avoid;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--soft-line);
+  color: var(--muted);
+}
+
+.method-contrast {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 20px;
+  border: 1px solid var(--soft-line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.method-contrast > div {
+  padding: 18px 20px;
+}
+
+.method-contrast > div.alt {
+  background: var(--accent-soft);
+  border-left: 1px solid var(--soft-line);
+}
+
+.method-contrast span,
+.method-example span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.method-contrast p,
+.method-example p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.method-example {
+  margin: 0 0 20px;
+  padding: 4px 0 4px 20px;
+  border-left: 3px solid var(--accent);
+}
+
+.method-example p {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.1rem;
+}
+
+.method-note {
+  margin: 0;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.method-test {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 36px;
+  margin: 56px 0 28px;
+  padding: 32px;
+  background: var(--panel);
+  border-radius: 6px;
+}
+
+.method-test h3 {
+  margin: 0 0 12px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.8rem;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.method-test p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.method-test ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: test;
+}
+
+.method-test li {
+  counter-increment: test;
+  display: flex;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 1.05rem;
+}
+
+.method-test li::before {
+  content: counter(test, decimal-leading-zero);
+  color: var(--accent);
+  font-size: 0.75rem;
+  padding-top: 4px;
+}
+
+.method-principle {
+  min-height: 0;
+  padding: 48px 32px;
+}
+
+.method-principle p {
+  max-width: 900px;
+  margin: 0;
+}
+
 .about-section {
   padding-bottom: 32px;
 }
@@ -638,8 +805,18 @@
   .hero,
   .problem-block,
   .detector-layout,
-  .about-copy {
+  .about-copy,
+  .method-step,
+  .method-test {
     grid-template-columns: 1fr;
+  }
+
+  .method-step {
+    gap: 16px;
+  }
+
+  .method-index {
+    position: static;
   }
 
   .pattern-grid,
@@ -692,8 +869,22 @@
 
   .pattern-grid,
   .framework-grid,
-  .demo-grid {
+  .demo-grid,
+  .method-contrast {
     grid-template-columns: 1fr;
+  }
+
+  .method-contrast > div.alt {
+    border-left: none;
+    border-top: 1px solid var(--soft-line);
+  }
+
+  .method-items {
+    columns: 1;
+  }
+
+  .method-test {
+    padding: 22px;
   }
 
   .site-footer {
