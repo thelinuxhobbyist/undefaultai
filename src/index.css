@@ -1,35 +1,49 @@
 :root {
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  /* UNDEFAULT: paper, ink, and one marker that may only highlight a decision. */
+  --paper: #ffffff;
+  --ink: #0b0b0b;
+  --grey: #6e6e6e;
+  --faint: #e4e4e4;
+  --mark: #ffe500;
+
+  /* DEFAULT: the familiar AI/SaaS world. Never used outside it. */
+  --d-violet: #6d4ef5;
+  --d-blue: #2a5cf5;
+  --d-navy: #101a52;
+  --d-gradient: linear-gradient(135deg, var(--d-violet) 0%, var(--d-blue) 48%, var(--d-navy) 100%);
+  --d-text: #f4f5ff;
+  --d-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  --serif: 'Iowan Old Style', 'Charter', 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif;
+  --mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+
+  font-family: var(--serif);
   line-height: 1.5;
   font-weight: 400;
-  color: #171412;
-  background: #f5f1ea;
+  color: var(--ink);
+  background: var(--paper);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color-scheme: light;
-
-  --bg: #f5f1ea;
-  --paper: #fbf8f4;
-  --panel: #f0e9df;
-  --ink: #171412;
-  --muted: #5a544f;
-  --line: rgba(23, 20, 18, 0.12);
-  --soft-line: rgba(23, 20, 18, 0.08);
-  --accent: #c36a4c;
-  --accent-soft: rgba(195, 106, 76, 0.14);
-  --olive: #8a8a6a;
-  --shadow: 0 20px 60px rgba(21, 18, 17, 0.08);
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s !important;
+    animation: none !important;
   }
 }
 
@@ -40,8 +54,9 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--bg);
+  background: var(--paper);
   color: var(--ink);
+  overflow-x: clip;
 }
 
 img {
@@ -59,14 +74,25 @@ button {
   cursor: pointer;
 }
 
-input {
-  font: inherit;
-}
-
 #root {
   min-height: 100vh;
 }
 
+mark {
+  background: var(--mark);
+  color: inherit;
+  padding: 0 0.08em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+h1 mark,
+h2 mark {
+  padding: 0 0.04em;
+  background: linear-gradient(var(--mark), var(--mark)) no-repeat 0 88% / 100% 58%;
+}
+
 ::selection {
-  background: rgba(195, 106, 76, 0.2);
+  background: var(--mark);
+  color: var(--ink);
 }

@@ -160,7 +160,7 @@ function Guide() {
             strategy at the beginning.
           </p>
 
-          <div className="further">
+          <div className="guide-further">
             <p className="eyebrow">Try it on your own work</p>
             <p className="further-line">See how much of your current design is default.</p>
             <Link className="button button-primary" to="/#detect">

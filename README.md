@@ -62,4 +62,14 @@ This is intended for the upload flow described in the product brief. The Worker 
 
 - The detector is intentionally rule-based for the MVP.
 - The architecture is already structured for a future `AnalysisProvider` abstraction.
-- The site is designed to be editorial and intentional rather than another generic AI template.
+
+## Design system
+
+UNDEFAULT and DEFAULT are two separate visual worlds, and their tokens never mix (`src/index.css`).
+
+- **UNDEFAULT**: white paper, black ink, and one marker yellow (`--mark`). Yellow is the opposite hue of the default's blue-violet, and it is only ever used as a highlight behind ink to mark a decision. It is never used as text colour or decoration.
+- **Type**: serif for the voice, monospace for annotations. Geometric sans-serif (`--d-sans`) belongs only to the DEFAULT world.
+- **Shape and motion**: square corners, 1px black rules where something is divided, and no decorative animation.
+- **DEFAULT** (`--d-*`): blue/violet gradient, geometric sans, rounded surfaces, glow. These are used only in the DEFAULT section, the hero's "by default" view, and the vague-prompt thumbnails.
+
+The footer colophon states the reason for each choice. Add a reason there before adding a new visual element.

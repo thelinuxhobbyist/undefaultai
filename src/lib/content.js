@@ -9,14 +9,17 @@ export const defaultPatterns = [
 
 export const homepagePrompts = [
   {
+    id: 'editorial',
     dont: 'Make it modern.',
     say: 'Use an editorial visual language. Avoid contemporary SaaS conventions.',
   },
   {
+    id: 'restrained',
     dont: 'Make it premium.',
     say: 'Use restrained typography, high contrast and a limited colour palette.',
   },
   {
+    id: 'broken',
     dont: 'Make it creative.',
     say: 'Break the conventional grid and allow elements to overlap.',
   },
@@ -42,7 +45,7 @@ export const promptExamples = [
   },
   {
     dont: 'Make it premium.',
-    say: 'Build the palette around warm neutrals and one accent tone. Keep contrast high and avoid the usual blue-purple AI default.',
+    say: 'Derive the palette from what the product does, and give every colour one job. Keep contrast high and avoid the usual blue-purple AI default.',
   },
   {
     dont: 'Make it futuristic.',
@@ -82,7 +85,7 @@ export const methodSteps = [
       'Common design clichés it must avoid',
     ],
     example:
-      'Use an editorial, precise, slightly skeptical tone. No purple-blue gradients, glowing neural networks, robot illustrations, oversized rounded cards, or phrases such as “unlock the future.” Use cream, charcoal, and one orange accent. Prefer asymmetrical layouts and information-dense diagrams.',
+      'Use an editorial, precise, slightly skeptical tone. No purple-blue gradients, glowing neural networks, robot illustrations, oversized rounded cards, or phrases such as “unlock the future.” Use white, black, and one marker colour that may only highlight a decision. Prefer asymmetrical layouts and information-dense diagrams.',
     note: 'Constraints don’t reduce creativity here. They stop the model reaching for the familiar.',
   },
   {

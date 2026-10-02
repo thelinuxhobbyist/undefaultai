@@ -1,18 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">UNDEFAULT AI preview</title>
-  <desc id="desc">A warm editorial design preview for the UNDEFAULT AI concept.</desc>
-  <rect width="1200" height="630" fill="#f5f1ea"/>
-  <rect x="56" y="56" width="1088" height="518" rx="40" fill="#fbf8f4" stroke="#171412" stroke-width="2"/>
-  <rect x="120" y="130" width="90" height="90" rx="24" fill="#fbf8f4" stroke="#171412" stroke-width="2"/>
-  <text x="240" y="180" fill="#171412" font-size="26" font-family="Georgia, serif" font-weight="600" letter-spacing="8">UNDEFAULT AI</text>
-  <text x="120" y="295" fill="#171412" font-size="86" font-family="Georgia, serif" font-weight="600">Why does AI</text>
-  <text x="120" y="385" fill="#171412" font-size="86" font-family="Georgia, serif" font-weight="600">design everything</text>
-  <text x="120" y="475" fill="#171412" font-size="86" font-family="Georgia, serif" font-weight="600">the same?</text>
-  <rect x="836" y="154" width="236" height="188" rx="32" fill="#d7d0c8"/>
-  <rect x="870" y="193" width="168" height="18" rx="9" fill="#171412" opacity="0.7"/>
-  <rect x="870" y="228" width="136" height="18" rx="9" fill="#171412" opacity="0.5"/>
-  <rect x="870" y="263" width="96" height="18" rx="9" fill="#171412" opacity="0.4"/>
-  <circle cx="898" cy="424" r="40" fill="#c36a4c" opacity="0.75"/>
-  <rect x="964" y="390" width="90" height="20" rx="10" fill="#171412" opacity="0.7"/>
-  <rect x="964" y="425" width="122" height="16" rx="8" fill="#171412" opacity="0.4"/>
+  <desc id="desc">Black serif headline on white, with the words “the same?” highlighted in marker yellow, beside a small blue-violet default website.</desc>
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <line x1="64" y1="96" x2="1136" y2="96" stroke="#0b0b0b" stroke-width="2"/>
+  <rect x="64" y="52" width="40" height="30" fill="#ffe500"/>
+  <text x="66" y="76" fill="#0b0b0b" font-size="24" font-family="Menlo, Consolas, monospace" font-weight="700">UNDEFAULT AI</text>
+  <text x="64" y="250" fill="#0b0b0b" font-size="104" font-family="Charter, Georgia, serif" letter-spacing="-4">Why does AI design</text>
+  <text x="64" y="365" fill="#0b0b0b" font-size="104" font-family="Charter, Georgia, serif" letter-spacing="-4">everything</text>
+  <rect x="60" y="400" width="456" height="104" fill="#ffe500"/>
+  <text x="64" y="480" fill="#0b0b0b" font-size="104" font-family="Charter, Georgia, serif" letter-spacing="-4">the same?</text>
+  <defs>
+    <linearGradient id="d" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6d4ef5"/>
+      <stop offset="0.48" stop-color="#2a5cf5"/>
+      <stop offset="1" stop-color="#101a52"/>
+    </linearGradient>
+  </defs>
+  <rect x="836" y="400" width="300" height="170" rx="18" fill="url(#d)"/>
+  <rect x="906" y="426" width="160" height="16" rx="8" fill="#ffffff" opacity="0.92"/>
+  <rect x="936" y="452" width="100" height="10" rx="5" fill="#ffffff" opacity="0.5"/>
+  <rect x="961" y="472" width="50" height="14" rx="7" fill="#f4f5ff"/>
+  <rect x="858" y="504" width="78" height="48" rx="8" fill="#ffffff" opacity="0.15"/>
+  <rect x="947" y="504" width="78" height="48" rx="8" fill="#ffffff" opacity="0.15"/>
+  <rect x="1036" y="504" width="78" height="48" rx="8" fill="#ffffff" opacity="0.15"/>
+  <text x="836" y="590" fill="#6e6e6e" font-size="18" font-family="Menlo, Consolas, monospace">the default</text>
 </svg>

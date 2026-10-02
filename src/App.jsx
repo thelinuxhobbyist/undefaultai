@@ -23,6 +23,15 @@ const navigation = [
   { label: 'Guide', to: '/guide' },
 ]
 
+const colophon = [
+  { choice: 'White paper', reason: 'An unmarked page. Nothing is decided until something is written on it.' },
+  { choice: 'Black ink', reason: 'Everything we decided to say.' },
+  { choice: 'Marker yellow', reason: 'The opposite hue of the default’s blue-violet. It only ever marks a decision.' },
+  { choice: 'Serif and mono', reason: 'Geometric sans-serif is left to the default world.' },
+  { choice: 'Square corners', reason: 'Rounding is what the default reaches for first.' },
+  { choice: 'Motion', reason: 'Things only move when you change them.' },
+]
+
 function App() {
   const location = useLocation()
   const route = routes[location.path]
@@ -55,8 +64,7 @@ function App() {
     <div className="app-shell">
       <header className="site-header">
         <Link className="brand" to="/" aria-label="UNDEFAULT AI home">
-          <span className="brand-mark">UN</span>
-          <span className="brand-text">UNDEFAULT AI</span>
+          <mark>UN</mark>DEFAULT AI
         </Link>
 
         <nav className="main-nav" aria-label="Main navigation">
@@ -81,14 +89,25 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <p>
-          <strong>UNDEFAULT AI</strong> is an interactive experiment about the visual habits AI
-          repeats when the direction is vague.
-        </p>
-        <nav className="footer-links" aria-label="Footer navigation">
-          <Link to="/#detect">Detector</Link>
-          <Link to="/guide">Guide</Link>
-        </nav>
+        <div className="footer-about">
+          <p>
+            <strong>UNDEFAULT AI</strong> is an interactive experiment about the visual habits AI
+            repeats when the direction is vague.
+          </p>
+          <nav className="footer-links" aria-label="Footer navigation">
+            <Link to="/#detect">Detector</Link>
+            <Link to="/guide">Guide</Link>
+          </nav>
+        </div>
+
+        <dl className="colophon" aria-label="Why this site looks like this">
+          {colophon.map((item) => (
+            <div key={item.choice}>
+              <dt>{item.choice}</dt>
+              <dd>{item.reason}</dd>
+            </div>
+          ))}
+        </dl>
       </footer>
     </div>
   )

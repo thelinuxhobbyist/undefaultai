@@ -92,6 +92,59 @@ function calculateImageMetrics(image) {
   }
 }
 
+function roundedRect(context, x, y, width, height, radius) {
+  context.beginPath()
+  context.roundRect(x, y, width, height, radius)
+  context.fill()
+}
+
+export function createExampleScreenshot() {
+  const canvas = document.createElement('canvas')
+  canvas.width = 1280
+  canvas.height = 800
+  const context = canvas.getContext('2d')
+
+  const background = context.createLinearGradient(0, 0, 1280, 800)
+  background.addColorStop(0, '#6d4ef5')
+  background.addColorStop(0.48, '#2a5cf5')
+  background.addColorStop(1, '#101a52')
+  context.fillStyle = background
+  context.fillRect(0, 0, 1280, 800)
+
+  context.fillStyle = 'rgba(255, 255, 255, 0.16)'
+  roundedRect(context, 540, 150, 200, 36, 18)
+
+  context.fillStyle = '#f4f5ff'
+  context.textAlign = 'center'
+  context.font = '700 64px Inter, "Segoe UI", system-ui, sans-serif'
+  context.fillText('Build the future of work,', 640, 270)
+  context.fillText('faster.', 640, 345)
+
+  context.fillStyle = 'rgba(244, 245, 255, 0.7)'
+  context.font = '400 24px Inter, "Segoe UI", system-ui, sans-serif'
+  context.fillText('The all-in-one platform for modern teams.', 640, 400)
+
+  context.fillStyle = '#f4f5ff'
+  roundedRect(context, 500, 440, 130, 50, 25)
+  context.fillStyle = 'rgba(255, 255, 255, 0.16)'
+  roundedRect(context, 650, 440, 130, 50, 25)
+
+  context.fillStyle = 'rgba(255, 255, 255, 0.1)'
+  roundedRect(context, 120, 560, 330, 180, 24)
+  roundedRect(context, 475, 560, 330, 180, 24)
+  roundedRect(context, 830, 560, 330, 180, 24)
+
+  return new Promise((resolve, reject) => {
+    canvas.toBlob((blob) => {
+      if (!blob) {
+        reject(new Error('Could not create example screenshot.'))
+        return
+      }
+      resolve(new File([blob], 'example-saas-landing.png', { type: 'image/png' }))
+    }, 'image/png')
+  })
+}
+
 export function analyzeDesign(file) {
   if (!file || !file.type.startsWith('image/')) {
     return Promise.resolve({
