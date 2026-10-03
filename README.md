@@ -36,24 +36,15 @@ This keeps the MVP inexpensive and predictable while keeping a clear path to a f
 
 ## Cloudflare architecture
 
-The project includes a Cloudflare Worker and an R2 bucket configuration for temporary screenshot storage:
+The site is served by a Cloudflare Worker (`workers/detector/index.js`, configured in `wrangler.toml`).
 
-- Worker: `workers/detector/index.js`
-- Config: `wrangler.toml`
-- Bucket binding: `DEFAULT_DETECTOR`
-- Bucket name: `default-detector`
-
-This is intended for the upload flow described in the product brief. The Worker validates the upload, stores the file in the private bucket, and returns a visual-analysis result.
+Screenshots are never stored. The detector analyses images entirely in the browser and never uploads them. The Worker's `/api/detect` endpoint returns a metadata-only result without keeping the file, and the Worker has no storage binding.
 
 ### Deploying to Cloudflare
 
 1. Install Wrangler if needed.
-2. Create the R2 bucket in Cloudflare:
-   ```bash
-   npx wrangler r2 bucket create default-detector
-   ```
-3. Authenticate Wrangler.
-4. Run:
+2. Authenticate Wrangler.
+3. Run:
    ```bash
    npm run deploy:cf
    ```
@@ -70,6 +61,6 @@ UNDEFAULT and DEFAULT are two separate visual worlds, and their tokens never mix
 - **UNDEFAULT**: white paper, black ink, and one marker yellow (`--mark`). Yellow is the opposite hue of the default's blue-violet, and it is only ever used as a highlight behind ink to mark a decision. It is never used as text colour or decoration.
 - **Type**: serif for the voice, monospace for annotations. Geometric sans-serif (`--d-sans`) belongs only to the DEFAULT world.
 - **Shape and motion**: square corners, 1px black rules where something is divided, and no decorative animation.
-- **DEFAULT** (`--d-*`): blue/violet gradient, geometric sans, rounded surfaces, glow. These are used only in the DEFAULT section, the hero's "by default" view, and the vague-prompt thumbnails.
+- **DEFAULT** (`--d-*`): blue/violet gradient, geometric sans, rounded surfaces, glow. These are used only on `/default`, the homepage's small default demonstration, and the vague-prompt thumbnails on `/break`.
 
 The footer colophon states the reason for each choice. Add a reason there before adding a new visual element.

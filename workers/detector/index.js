@@ -69,20 +69,12 @@ export default {
       return Response.json({ error: 'Upload a PNG, JPG, or WEBP image.' }, { status: 400 })
     }
 
-    const objectKey = crypto.randomUUID()
-    await env.DEFAULT_DETECTOR.put(objectKey, await file.arrayBuffer(), {
-      httpMetadata: { contentType: file.type },
-    })
-
     const analysis = scoreFromMetadata(file)
 
     return Response.json({
       ...analysis,
-      storage: {
-        bucket: 'default-detector',
-        key: objectKey,
-      },
-      note: 'Experimental design indicator only; this identifies visual conventions, not AI authorship.',
+      stored: false,
+      note: 'Experimental design indicator only; this identifies visual conventions, not AI authorship. Uploads are never stored.',
     })
   },
 }

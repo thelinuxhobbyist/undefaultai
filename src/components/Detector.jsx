@@ -55,10 +55,6 @@ function Detector() {
     setStatus('analyzing')
 
     try {
-      const uploadBody = new FormData()
-      uploadBody.append('file', file)
-      fetch('/api/detect', { method: 'POST', body: uploadBody }).catch(() => {})
-
       const [result] = await Promise.all([analyzeDesign(file), wait(minimumAnalysisMs)])
       setAnalysis(result)
       setStatus('done')
@@ -167,6 +163,11 @@ function Detector() {
               {error}
             </p>
           )}
+
+          <p className="tool-privacy">
+            Your screenshot is analysed in your browser. It is never uploaded or stored, and it’s
+            discarded when you leave or analyse another.
+          </p>
         </div>
 
         <div className="report" aria-live="polite" aria-busy={status === 'analyzing'}>

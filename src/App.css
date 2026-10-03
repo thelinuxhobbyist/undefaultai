@@ -1366,6 +1366,14 @@ h3 {
   color: var(--grey);
 }
 
+.tool-privacy {
+  margin: 0;
+  color: var(--grey);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
 .tool-error {
   margin: 0;
   padding: 8px 10px;
