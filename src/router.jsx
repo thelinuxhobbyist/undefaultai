@@ -7,8 +7,8 @@ function readLocation(source) {
   return { path, hash: window.location.hash, source }
 }
 
-export function navigate(to) {
-  window.history.pushState({}, '', to)
+export function navigate(to, { replace = false } = {}) {
+  window.history[replace ? 'replaceState' : 'pushState']({}, '', to)
   listeners.forEach((listener) => listener())
 }
 

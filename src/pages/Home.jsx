@@ -1,122 +1,192 @@
 import { useState } from 'react'
-import BreakTheDefault from '../components/BreakTheDefault'
-import DefaultWorld from '../components/DefaultWorld'
-import Detector from '../components/Detector'
 import { Link } from '../router'
 
-const journey = [
-  { step: '1', label: 'See the default', to: '/#default' },
-  { step: '2', label: 'Understand it', to: '/#idea' },
-  { step: '3', label: 'Detect your design', to: '/#detect' },
-  { step: '4', label: 'Break it', to: '/#break' },
+const conventions = [
+  'Purple / blue gradient',
+  'Rounded cards',
+  'Centred hero',
+  'Familiar typography',
+  'Bento-style layout',
+  'Pills',
+  'Generic SaaS structure',
 ]
 
-const decisions = [
-  { label: 'Switch off a default page', to: '/#default' },
-  { label: 'Analyse my own design', to: '/#detect' },
-  { label: 'Learn to direct AI', to: '/guide' },
+const experiences = [
+  {
+    id: 'default',
+    to: '/default',
+    name: 'The default',
+    claim: 'See the patterns AI keeps reaching for.',
+    text: 'Explore the familiar visual conventions that repeatedly appear in AI-generated interfaces.',
+    action: 'Explore',
+    preview: <span className="preview-default">✦ Now with AI</span>,
+  },
+  {
+    id: 'detect',
+    to: '/detect',
+    name: 'Detect',
+    claim: 'How much of your design is default?',
+    text: 'Upload a screenshot and explore the familiar patterns detected in it.',
+    action: 'Detect a design',
+    preview: (
+      <span className="preview-detect">
+        <b>42%</b> default patterns
+      </span>
+    ),
+  },
+  {
+    id: 'break',
+    to: '/break',
+    name: 'Break',
+    claim: 'Give AI better creative direction.',
+    text: 'Learn how deliberate decisions can move an AI-generated design away from familiar conventions.',
+    action: 'Break the default',
+    preview: (
+      <span className="preview-break">
+        <s>Make it modern.</s> Use an editorial visual language.
+      </span>
+    ),
+  },
+  {
+    id: 'guide',
+    to: '/guide',
+    name: 'Guide',
+    claim: 'Go deeper.',
+    text: 'A practical guide to using AI as a production tool without letting it make all of the creative decisions.',
+    action: 'Read the guide',
+    preview: <span className="preview-guide">Eight chapters</span>,
+  },
 ]
+
+const pad = (number) => String(number).padStart(2, '0')
+
+function Marker({ index, active }) {
+  return (
+    <span className={`mini-marker mini-marker-${index + 1} ${active ? 'is-active' : ''}`}>
+      {index + 1}
+    </span>
+  )
+}
 
 function Home() {
-  const [heroDefault, setHeroDefault] = useState(false)
+  const [hovered, setHovered] = useState(null)
 
   return (
     <>
-      <section className={`hero ${heroDefault ? 'is-default' : ''}`}>
-        <div className="hero-switch" role="group" aria-label="View this hero">
-          <span>View this page</span>
-          <button type="button" aria-pressed={!heroDefault} onClick={() => setHeroDefault(false)}>
-            decided
-          </button>
-          <button type="button" aria-pressed={heroDefault} onClick={() => setHeroDefault(true)}>
-            by default
-          </button>
-        </div>
-
-        <p className="hero-kicker">{heroDefault ? 'Now with AI' : 'UNDEFAULT AI'}</p>
+      <section className="home-hero">
+        <p className="home-kicker">UNDEFAULT AI</p>
         <h1>
           Why does AI design everything <mark>the same?</mark>
         </h1>
-        <p className="lede">
-          AI can build almost anything. But when the direction is vague, it reaches for the
-          familiar. UNDEFAULT AI helps you see those patterns — and decide what to do instead.
-        </p>
+        <div className="home-hero-foot">
+          <p className="lede">
+            AI can build almost anything. But when the direction is vague, it tends to reach for the
+            familiar.
+          </p>
+          <div className="cta-row">
+            <Link className="button button-primary" to="/default">
+              Explore the default
+            </Link>
+            <Link className="button" to="/detect">
+              Detect a design
+            </Link>
+          </div>
+        </div>
+      </section>
 
-        <p className="hero-note" aria-live="polite">
-          {heroDefault
-            ? 'Same words, nobody deciding: gradient, centred, geometric sans, pills, glow.'
-            : 'Try “by default” to see this page if nobody made a decision.'}
-        </p>
-
-        <nav className="journey" aria-label="What you can do here">
-          <ol>
-            {journey.map((item) => (
-              <li key={item.step}>
-                <Link to={item.to}>
-                  <span>{item.step}</span>
-                  {item.label}
-                </Link>
+      <section className="home-default" aria-labelledby="home-default-title">
+        <div className="home-default-text">
+          <h2 id="home-default-title">
+            AI doesn’t invent from nothing. <span>It recognises patterns.</span>
+          </h2>
+          <ol className="home-default-legend" onMouseLeave={() => setHovered(null)}>
+            {conventions.map((name, index) => (
+              <li
+                key={name}
+                className={hovered === index ? 'is-active' : undefined}
+                onMouseEnter={() => setHovered(index)}
+              >
+                <span>{index + 1}</span>
+                {name}
               </li>
             ))}
           </ol>
-        </nav>
+          <Link className="arrow-link" to="/default">
+            Explore the default →
+          </Link>
+        </div>
+
+        <figure className="mini-default" aria-label="A typical AI-generated landing page">
+          <div className="mini-site" aria-hidden="true">
+            <div className="mini-nav">
+              <b>Lumina</b>
+              <span>Product</span>
+              <span>Pricing</span>
+              <i>Get started</i>
+            </div>
+            <div className="mini-hero">
+              <span className="mini-pill">✦ Now with AI</span>
+              <strong>Build the future of work, faster.</strong>
+              <p>The all-in-one platform for modern teams.</p>
+              <div className="mini-actions">
+                <i>Start free</i>
+                <i>Watch demo</i>
+              </div>
+            </div>
+            <div className="mini-bento">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+          </div>
+          {conventions.map((name, index) => (
+            <Marker key={name} index={index} active={hovered === index} />
+          ))}
+          <figcaption>You’ve seen this page before. Nobody chose any of it.</figcaption>
+        </figure>
       </section>
 
-      <DefaultWorld />
-
-      <section id="idea" className="thesis">
-        <p className="step-mark">2 / 4 — Understand it</p>
+      <section className="thesis">
         <p className="thesis-setup">The problem isn’t that these choices are bad.</p>
         <h2 className="thesis-statement">
           The problem is when <mark>nobody actually chose them.</mark>
         </h2>
-        <p className="thesis-note">
-          AI is very good at producing familiar design. UNDEFAULT is about making the decisions
-          visible again.
-        </p>
       </section>
 
-      <section id="detect" className="section detect">
-        <header className="section-head">
-          <p className="step-mark">3 / 4 — Detect it</p>
-          <h2>How much of your design is default?</h2>
-          <p className="section-intro">
-            Upload a screenshot and see which familiar patterns it leans on.
+      <section className="experiences" aria-labelledby="experiences-title">
+        <header className="experiences-head">
+          <h2 id="experiences-title">Four ways in.</h2>
+          <p>
+            UNDEFAULT AI helps you recognise familiar patterns, analyse them, and make more
+            deliberate design decisions. Start wherever you like.
           </p>
         </header>
 
-        <Detector />
-      </section>
-
-      <section id="break" className="section break">
-        <header className="section-head">
-          <p className="step-mark">4 / 4 — Break it</p>
-          <h2>Don’t just tell AI what you want. Tell it what decisions to make.</h2>
-        </header>
-
-        <BreakTheDefault />
-
-        <p className="further">
-          Want to go further?{' '}
-          <Link to="/guide">Learn how to give AI better creative direction →</Link>
-        </p>
+        <ol className="experience-list">
+          {experiences.map((item, index) => (
+            <li key={item.id}>
+              <Link className={`experience experience-${item.id}`} to={item.to}>
+                <span className="experience-number">{pad(index + 1)}</span>
+                <span className="experience-name">{item.name}</span>
+                <span className="experience-copy">
+                  <strong>{item.claim}</strong>
+                  <span>{item.text}</span>
+                </span>
+                <span className="experience-preview" aria-hidden="true">
+                  {item.preview}
+                </span>
+                <span className="experience-action">{item.action} →</span>
+              </Link>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section className="final">
         <h2>
           <span>AI can make the website.</span> You still need to make the decisions.
         </h2>
-
-        <nav className="decide" aria-label="Make a decision">
-          <p className="step-mark">Make a decision</p>
-          <ol>
-            {decisions.map((decision) => (
-              <li key={decision.label}>
-                <Link to={decision.to}>{decision.label}</Link>
-              </li>
-            ))}
-          </ol>
-        </nav>
       </section>
     </>
   )

@@ -4,6 +4,15 @@
     <loc>https://undefaultai.com/</loc>
   </url>
   <url>
+    <loc>https://undefaultai.com/default</loc>
+  </url>
+  <url>
+    <loc>https://undefaultai.com/detect</loc>
+  </url>
+  <url>
+    <loc>https://undefaultai.com/break</loc>
+  </url>
+  <url>
     <loc>https://undefaultai.com/guide</loc>
   </url>
 </urlset>

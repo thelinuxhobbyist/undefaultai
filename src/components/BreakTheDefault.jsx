@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { homepagePrompts } from '../lib/content'
+import { promptPairs } from '../lib/content'
 
 function Thumb({ variant }) {
   return (
@@ -29,7 +29,7 @@ function BreakTheDefault() {
       </div>
 
       <ol className="break-rows">
-        {homepagePrompts.map((prompt) => (
+        {promptPairs.map((prompt) => (
           <li key={prompt.id}>
             <div className="break-prompt">
               <span>{directed ? 'Say' : 'Don’t say'}</span>

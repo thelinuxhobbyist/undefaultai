@@ -41,11 +41,15 @@ function DefaultWorld() {
   const worldClass = ['world', ...[...active].map((id) => `p-${id}`)].join(' ')
 
   return (
-    <section id="default" className={worldClass}>
+    <section className={worldClass}>
       <div className="world-inner">
         <header className="world-head">
-          <p className="world-kicker">1 / 4 — See the default</p>
-          <h2>AI doesn’t invent from nothing. It recognises patterns.</h2>
+          <p className="world-kicker">The default — a live specimen</p>
+          <h1>This is what AI designs when nobody decides.</h1>
+          <p className="world-intro">
+            Every convention below is switched on. Turn them off one at a time and watch the page
+            stop looking like everything else.
+          </p>
         </header>
 
         <div className="world-body">

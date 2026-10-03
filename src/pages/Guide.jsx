@@ -1,11 +1,5 @@
-import { decisionFramework, methodSteps, promptExamples, uniquenessTest } from '../lib/content'
+import { methodSteps, uniquenessTest } from '../lib/content'
 import { Link } from '../router'
-
-const extraSections = [
-  { id: 'choices', title: 'Choose, don’t accept' },
-  { id: 'prompts', title: 'Prompt library' },
-  { id: 'test', title: 'The competitor test' },
-]
 
 const pad = (number) => String(number).padStart(2, '0')
 
@@ -13,13 +7,16 @@ function Guide() {
   return (
     <article className="guide">
       <header className="guide-hero">
-        <p className="eyebrow">The guide — Break the default</p>
+        <p className="eyebrow">
+          The guide
+          <span>{methodSteps.length} chapters · about 10 minutes</span>
+        </p>
         <div>
-          <h1>Move AI from creative director to production assistant.</h1>
-          <p className="lede">
-            Decide the strategy, personality, content and user experience yourself first — then
-            use AI to execute and refine them. Vague prompts and shared templates push every tool
-            toward the same familiar result.
+          <h1>Use AI to make the website. Don’t let it make the decisions.</h1>
+          <p className="guide-standfirst">
+            AI is an excellent production tool. The trouble starts when it quietly becomes the
+            creative director, because it will direct every project towards the same familiar
+            place. This guide is about keeping the decisions where they belong.
           </p>
         </div>
       </header>
@@ -36,23 +33,29 @@ function Guide() {
                 </Link>
               </li>
             ))}
-            {extraSections.map((section) => (
-              <li key={section.id}>
-                <Link to={`/guide#${section.id}`}>
-                  <span>—</span>
-                  {section.title}
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link to="/guide#test">
+                <span>—</span>
+                The competitor test
+              </Link>
+            </li>
           </ol>
         </nav>
 
         <div className="guide-content">
+          <p className="guide-opening">
+            Ask a model for “a homepage for my AI product” and it will give you a centred headline on
+            a purple-blue gradient, a pill that says “Now with AI”, and three rounded cards. Not
+            because it’s lazy, but because that’s the most likely answer to a question with no
+            other information in it. Every chapter below is a way of giving it that other
+            information — or of keeping certain decisions for yourself.
+          </p>
+
           <ol className="method-list">
             {methodSteps.map((step, index) => (
               <li key={step.title} id={`step-${index + 1}`} className="method-step">
                 <div className="method-index">
-                  <span>{pad(index + 1)}</span>
+                  <span>Chapter {pad(index + 1)}</span>
                   <h2>{step.title}</h2>
                 </div>
 
@@ -106,45 +109,6 @@ function Guide() {
             ))}
           </ol>
 
-          <section id="choices" className="guide-section">
-            <h2>Choose, don’t accept.</h2>
-            <p>
-              Every design has an answer for each of these. The question is whether you picked it,
-              or the model did.
-            </p>
-            <dl className="choices">
-              {decisionFramework.map((group) => (
-                <div key={group.title}>
-                  <dt>{group.title}</dt>
-                  <dd>
-                    {group.items.map((item) => (
-                      <span key={item}>{item}</span>
-                    ))}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </section>
-
-          <section id="prompts" className="guide-section">
-            <h2>Prompt library.</h2>
-            <p>Replace adjectives with decisions the model can actually act on.</p>
-            <ol className="say-list">
-              {promptExamples.map((prompt) => (
-                <li key={prompt.dont}>
-                  <div className="say-dont">
-                    <span>Don’t say</span>
-                    <p>{prompt.dont}</p>
-                  </div>
-                  <div className="say-do">
-                    <span>Say</span>
-                    <p>{prompt.say}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </section>
-
           <section id="test" className="guide-section">
             <h2>Put your homepage beside three competitors and hide the logos.</h2>
             <p>If the answers are no, the website is probably still using category defaults.</p>
@@ -161,11 +125,18 @@ function Guide() {
           </p>
 
           <div className="guide-further">
-            <p className="eyebrow">Try it on your own work</p>
-            <p className="further-line">See how much of your current design is default.</p>
-            <Link className="button button-primary" to="/#detect">
-              Open the detector →
-            </Link>
+            <p className="eyebrow">Put it into practice</p>
+            <p className="further-line">
+              Turn these ideas into a brief, then check the result.
+            </p>
+            <div className="cta-row">
+              <Link className="button button-primary" to="/break#decisions">
+                Build a brief →
+              </Link>
+              <Link className="button" to="/detect">
+                Detect a design
+              </Link>
+            </div>
           </div>
         </div>
       </div>

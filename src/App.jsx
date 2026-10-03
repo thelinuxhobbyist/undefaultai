@@ -1,6 +1,9 @@
 import { useEffect } from 'react'
-import { Link, useLocation } from './router'
+import { Link, navigate, useLocation } from './router'
 import Home from './pages/Home'
+import DefaultPage from './pages/DefaultPage'
+import Detect from './pages/Detect'
+import Break from './pages/Break'
 import Guide from './pages/Guide'
 import NotFound from './pages/NotFound'
 import './App.css'
@@ -10,16 +13,35 @@ const routes = {
     Page: Home,
     title: 'UNDEFAULT AI — Why does AI design everything the same?',
   },
+  '/default': {
+    Page: DefaultPage,
+    title: 'The default — The patterns AI keeps reaching for | UNDEFAULT AI',
+  },
+  '/detect': {
+    Page: Detect,
+    title: 'Detect — How much of your design is default? | UNDEFAULT AI',
+  },
+  '/break': {
+    Page: Break,
+    title: 'Break — Give AI better creative direction | UNDEFAULT AI',
+  },
   '/guide': {
     Page: Guide,
-    title: 'Break the default — A guide to directing AI | UNDEFAULT AI',
+    title: 'Guide — Using AI without letting it decide | UNDEFAULT AI',
   },
 }
 
+const legacyAnchors = {
+  '#default': '/default',
+  '#detect': '/detect',
+  '#break': '/break',
+  '#idea': '/',
+}
+
 const navigation = [
-  { label: 'The default', to: '/#default' },
-  { label: 'Detect', to: '/#detect' },
-  { label: 'Break', to: '/#break' },
+  { label: 'The default', to: '/default' },
+  { label: 'Detect', to: '/detect' },
+  { label: 'Break', to: '/break' },
   { label: 'Guide', to: '/guide' },
 ]
 
@@ -27,7 +49,7 @@ const colophon = [
   { choice: 'White paper', reason: 'An unmarked page. Nothing is decided until something is written on it.' },
   { choice: 'Black ink', reason: 'Everything we decided to say.' },
   { choice: 'Marker yellow', reason: 'The opposite hue of the default’s blue-violet. It only ever marks a decision.' },
-  { choice: 'Serif and mono', reason: 'Geometric sans-serif is left to the default world.' },
+  { choice: 'Serif and mono', reason: 'Serif for reading, mono for measuring. Geometric sans is left to the default.' },
   { choice: 'Square corners', reason: 'Rounding is what the default reaches for first.' },
   { choice: 'Motion', reason: 'Things only move when you change them.' },
 ]
@@ -36,6 +58,12 @@ function App() {
   const location = useLocation()
   const route = routes[location.path]
   const Page = route?.Page ?? NotFound
+
+  useEffect(() => {
+    if (location.path === '/' && legacyAnchors[location.hash]) {
+      navigate(legacyAnchors[location.hash], { replace: true })
+    }
+  }, [location])
 
   useEffect(() => {
     document.title = route?.title ?? 'Not found | UNDEFAULT AI'
@@ -70,7 +98,7 @@ function App() {
         <nav className="main-nav" aria-label="Main navigation">
           {navigation.map((item) => (
             <Link
-              key={item.label}
+              key={item.to}
               to={item.to}
               aria-current={item.to === location.path ? 'page' : undefined}
             >
@@ -79,12 +107,12 @@ function App() {
           ))}
         </nav>
 
-        <Link className="button button-small header-cta" to="/#detect">
+        <Link className="button button-small header-cta" to="/detect">
           Detect a design
         </Link>
       </header>
 
-      <main>
+      <main className={`page page-${location.path.slice(1) || 'home'}`}>
         <Page />
       </main>
 
@@ -95,8 +123,12 @@ function App() {
             repeats when the direction is vague.
           </p>
           <nav className="footer-links" aria-label="Footer navigation">
-            <Link to="/#detect">Detector</Link>
-            <Link to="/guide">Guide</Link>
+            <Link to="/">Home</Link>
+            {navigation.map((item) => (
+              <Link key={item.to} to={item.to}>
+                {item.label}
+              </Link>
+            ))}
           </nav>
         </div>
 
